@@ -15910,6 +15910,38 @@ paths:
       summary: Delete a global variable
       tags:
       - Synthetics
+    get:
+      description: Get the detail configuration of a global variable.
+      operationId: GetGlobalVariable
+      parameters:
+      - description: The ID of the global variable.
+        in: path
+        name: variable_id
+        required: true
+        schema:
+          type: string
+      - description: Get the variable value if the variable is secure.
+        in: query
+        name: full
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyntheticsGlobalVariable'
+          description: OK
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Not found
+      summary: Get a global variable
+      tags:
+      - Synthetics
     put:
       description: Edit a Synthetics global variable.
       operationId: EditGlobalVariable
